@@ -38,10 +38,6 @@ func (b *Builder) Prepare(raws ...interface{}) ([]string, []string, error) {
 	}
 	b.config = config
 
-	if b.config.APIKey == "" || b.config.APISecret == "" {
-		return nil, nil, errors.New("missing API credentials")
-	}
-
 	packer.LogSecretFilter.Set(b.config.APIKey, b.config.APISecret)
 
 	return nil, nil, nil

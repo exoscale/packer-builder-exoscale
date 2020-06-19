@@ -50,7 +50,7 @@ func (s *stepRegisterTemplate) Run(ctx context.Context, state multistep.StateBag
 		ZoneID: zone.ID,
 	})
 	if err != nil {
-		ui.Error(fmt.Sprintf("unable to export Compute instance snapshot: %s", err))
+		ui.Error(fmt.Sprintf("unable to register template: %s", err))
 		return multistep.ActionHalt
 	}
 	templates := resp.(*[]egoscale.Template)
