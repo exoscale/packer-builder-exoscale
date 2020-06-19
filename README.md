@@ -37,7 +37,7 @@ binary file can be found in the `/bin` directory.
 To use the plugin with Packer, please follow the official documentation on
 [installing a Packer plugin][packerplugindoc].
 
-Here is the list of supported configuration parameters by the post-processor.
+Here is the list of supported configuration parameters by the builder.
 
 
 ### Required parameters
@@ -197,7 +197,6 @@ $ exo vm template show 423e0bda-f127-417e-9c10-4e412d596478
 
 [releases]: https://github.com/exoscale/packer-builder-exoscale/releases
 [packer]: https://www.packer.io/
-[packerintro]: https://www.packer.io/intro/
 [packerqemu]: https://www.packer.io/docs/builders/qemu/
 [customtemplatesdoc]: https://community.exoscale.com/documentation/compute/custom-templates/
 [packerplugindoc]: https://www.packer.io/docs/extending/plugins/#installing-plugins
