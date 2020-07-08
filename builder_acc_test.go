@@ -72,6 +72,12 @@ func testAccCheckBuilderArtifact(artifacts []packer.Artifact) error {
 			artifact.template.ZoneName)
 	}
 
+	if artifact.template.BootMode != defaultTemplateBootMode {
+		return fmt.Errorf("expected template boot mode %q, got %q",
+			defaultTemplateBootMode,
+			artifact.template.BootMode)
+	}
+
 	if username, ok := artifact.template.Details["username"]; !ok {
 		return errors.New("artifact username not set")
 	} else if username != testAccTemplateUsername {
