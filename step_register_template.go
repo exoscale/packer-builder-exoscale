@@ -37,6 +37,7 @@ func (s *stepRegisterTemplate) Run(ctx context.Context, state multistep.StateBag
 	resp, err := exo.RequestWithContext(ctx, &egoscale.RegisterCustomTemplate{
 		Name:            config.TemplateName,
 		Displaytext:     config.TemplateDescription,
+		BootMode:        config.TemplateBootMode,
 		URL:             snapshotURL,
 		Checksum:        snapshotChecksum,
 		PasswordEnabled: &passwordEnabled,

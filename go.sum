@@ -170,8 +170,8 @@ github.com/envoyproxy/protoc-gen-validate v0.1.0 h1:EQciDnbrYxy13PgWoY8AqoxGiPrp
 github.com/envoyproxy/protoc-gen-validate v0.1.0/go.mod h1:iSmxcyjqTsJpI2R4NaDN7+kN2VEUnK/pcBlmesArF7c=
 github.com/exoscale/egoscale v0.18.1 h1:1FNZVk8jHUx0AvWhOZxLEDNlacTU0chMXUUNkm9EZaI=
 github.com/exoscale/egoscale v0.18.1/go.mod h1:Z7OOdzzTOz1Q1PjQXumlz9Wn/CddH0zSYdCF3rnBKXE=
-github.com/exoscale/egoscale v0.26.1-0.20200615073218-f39796e51f1d h1:VI/FO0AtTR6Y1RxmT+0b18LgnJ2MBYU1jKlV/5SahEc=
-github.com/exoscale/egoscale v0.26.1-0.20200615073218-f39796e51f1d/go.mod h1:WThejIJgwf32NoUfOhIHIH7GfD6ZU4QK9mC1s8inIaU=
+github.com/exoscale/egoscale v0.26.6 h1:nXk2W00LX/nfqlf/MloiGX6wtCiHiLaN77Z1VHsm0tk=
+github.com/exoscale/egoscale v0.26.6/go.mod h1:WThejIJgwf32NoUfOhIHIH7GfD6ZU4QK9mC1s8inIaU=
 github.com/fatih/camelcase v1.0.0 h1:hxNvNX/xYBp0ovncs8WyWZrOrpBNub/JfaMvbURyft8=
 github.com/fatih/camelcase v1.0.0/go.mod h1:yN2Sb0lFhZJUdVvtELVWefmrXpuZESvPmqwoZc+/fpc=
 github.com/fatih/color v1.7.0 h1:DkWD4oS2D8LGGgTQ6IvwJJXSL5Vp2ffcQg58nFV38Ys=
