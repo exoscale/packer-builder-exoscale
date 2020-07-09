@@ -4,7 +4,7 @@ go 1.14
 
 require (
 	github.com/deepmap/oapi-codegen v1.3.8 // indirect
-	github.com/exoscale/egoscale v0.26.1-0.20200615073218-f39796e51f1d
+	github.com/exoscale/egoscale v0.26.6
 	github.com/gofrs/uuid v3.3.0+incompatible // indirect
 	github.com/hashicorp/hcl/v2 v2.3.0
 	github.com/hashicorp/packer v1.5.6
