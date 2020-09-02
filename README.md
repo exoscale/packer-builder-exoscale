@@ -10,7 +10,7 @@ provisioners and then snapshots the storage volume of the instance to
 register a custom template from the exported snapshot.
 
 **Note:** the `exoscale` Packer builder only supports UNIX-like operating
-systems (e.g. GNU/Linux, *BSD...). To build Exoscale custom templates for
+systems (e.g. GNU/Linux, \*BSD...). To build Exoscale custom templates for
 other OS, we recommend using the [QEMU][packerqemu] builder combined with the
 [exoscale-import][exoscale-import] Packer post-processor plugin.
 
@@ -29,7 +29,7 @@ uncompress it to retrieve the `packer-builder-exoscale` plugin binary file.
 If you prefer to build the plugin from sources, clone the GitHub repository
 locally and run the command `make build` from the root of the sources
 directory. Upon successful compilation, a `packer-builder-exoscale` plugin
-binary file can be found in the `/bin` directory.
+binary file can be found in the `bin/` directory.
 
 
 ## Configuration
@@ -196,6 +196,18 @@ $ exo vm template show 423e0bda-f127-417e-9c10-4e412d596478
   │ Password?     │ true                                 │
   ┼───────────────┼──────────────────────────────────────┼
 ```
+
+
+## Contributing
+
+* If you think you've found a bug in the code or you have a question regarding
+  the usage of this software, please reach out to us by opening an issue in
+  this GitHub repository.
+* Contributions to this project are welcome: if you want to add a feature or a
+  fix a bug, please do so by opening a Pull Request in this GitHub repository.
+  In case of feature contribution, we kindly ask you to open an issue to
+  discuss it beforehand.
+
 
 [releases]: https://github.com/exoscale/packer-builder-exoscale/releases
 [packer]: https://www.packer.io/
