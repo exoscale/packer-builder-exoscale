@@ -21,7 +21,7 @@ other OS, we recommend using the [QEMU][packerqemu] builder combined with the
 
 You can find pre-built releases of the plugin [here][releases].
 Once you have downloaded the latest archive corresponding to your target OS,
-uncompress it to retrieve the `packer-builder-exoscale` plugin binary file.
+uncompress it to retrieve the `packer-builder-exoscale` plugin binary file, and place the binary file to the plugin directory.
 
 
 ### From Sources
