@@ -79,6 +79,9 @@ Here is the list of supported configuration parameters by the builder.
 - `instance_security_group` (string) - Security Group to use for the Compute
   instance. Defaults to `default`.
 
+- `instance_private_networks` (list of strings) - List of Private Networks
+  (names) to attach to the Compute instance.
+
 - `instance_ssh_key` (string) - Name of the Exoscale SSH key to use with the
   Compute instance. If unset, a throwaway SSH key named `packer-<BUILD ID>`
   will be created before creating the instance, and destroyed after a

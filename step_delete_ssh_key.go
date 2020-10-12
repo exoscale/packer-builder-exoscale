@@ -34,4 +34,4 @@ func (s *stepDeleteSSHKey) Run(ctx context.Context, state multistep.StateBag) mu
 	return multistep.ActionContinue
 }
 
-func (s *stepDeleteSSHKey) Cleanup(state multistep.StateBag) {}
+func (s *stepDeleteSSHKey) Cleanup(_ multistep.StateBag) {}

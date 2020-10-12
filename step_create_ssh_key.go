@@ -44,7 +44,7 @@ func (s *stepCreateSSHKey) Run(ctx context.Context, state multistep.StateBag) mu
 	config.Comm.SSHPrivateKey = []byte(sshKey.PrivateKey)
 	if config.PackerDebug {
 		sshPrivateKeyFile := config.InstanceSSHKey
-		if err := ioutil.WriteFile(sshPrivateKeyFile, config.Comm.SSHPrivateKey, 0600); err != nil {
+		if err := ioutil.WriteFile(sshPrivateKeyFile, config.Comm.SSHPrivateKey, 0o600); err != nil {
 			ui.Error(fmt.Sprintf("unable to write SSH private key to file: %s", err))
 			return multistep.ActionHalt
 		}
@@ -60,4 +60,4 @@ func (s *stepCreateSSHKey) Run(ctx context.Context, state multistep.StateBag) mu
 	return multistep.ActionContinue
 }
 
-func (s *stepCreateSSHKey) Cleanup(state multistep.StateBag) {}
+func (s *stepCreateSSHKey) Cleanup(_ multistep.StateBag) {}
