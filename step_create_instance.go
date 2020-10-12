@@ -52,6 +52,12 @@ func (s *stepCreateInstance) Run(ctx context.Context, state multistep.StateBag) 
 		}
 	}
 
+	privateNetworks, err := instancePrivateNetworkIDs(ctx, state)
+	if err != nil {
+		ui.Error(fmt.Sprintf("unable to retrieve Private Networks: %s", err))
+		return multistep.ActionHalt
+	}
+
 	resp, err = exo.RequestWithContext(ctx, &egoscale.DeployVirtualMachine{
 		Name:               instanceName,
 		ServiceOfferingID:  instanceType.ID,
@@ -59,6 +65,7 @@ func (s *stepCreateInstance) Run(ctx context.Context, state multistep.StateBag) 
 		RootDiskSize:       config.InstanceDiskSize,
 		KeyPair:            config.InstanceSSHKey,
 		SecurityGroupNames: []string{config.InstanceSecurityGroup},
+		NetworkIDs:         privateNetworks,
 		ZoneID:             zone.ID,
 	})
 	if err != nil {
@@ -76,4 +83,32 @@ func (s *stepCreateInstance) Run(ctx context.Context, state multistep.StateBag) 
 	return multistep.ActionContinue
 }
 
-func (s *stepCreateInstance) Cleanup(state multistep.StateBag) {}
+func (s *stepCreateInstance) Cleanup(_ multistep.StateBag) {}
+
+func instancePrivateNetworkIDs(ctx context.Context, state multistep.StateBag) ([]egoscale.UUID, error) {
+	var (
+		exo    = state.Get("exo").(*egoscale.Client)
+		config = state.Get("config").(*Config)
+		zone   = state.Get("zone").(*egoscale.Zone)
+		ids    []egoscale.UUID
+	)
+
+	resp, err := exo.RequestWithContext(ctx, &egoscale.ListNetworks{ZoneID: zone.ID})
+	if err != nil {
+		return nil, err
+	}
+
+next:
+	for _, userNetwork := range config.InstancePrivateNetworks {
+		for _, network := range resp.(*egoscale.ListNetworksResponse).Network {
+			if network.Name == userNetwork {
+				ids = append(ids, *network.ID)
+				continue next
+			}
+		}
+
+		return nil, fmt.Errorf("%q: not found", userNetwork)
+	}
+
+	return ids, nil
+}

@@ -29,4 +29,4 @@ func (s *stepDestroyInstance) Run(ctx context.Context, state multistep.StateBag)
 	return multistep.ActionContinue
 }
 
-func (s *stepDestroyInstance) Cleanup(state multistep.StateBag) {}
+func (s *stepDestroyInstance) Cleanup(_ multistep.StateBag) {}

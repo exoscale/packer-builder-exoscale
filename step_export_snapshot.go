@@ -33,4 +33,4 @@ func (s *stepExportSnapshot) Run(ctx context.Context, state multistep.StateBag) 
 	return multistep.ActionContinue
 }
 
-func (s *stepExportSnapshot) Cleanup(state multistep.StateBag) {}
+func (s *stepExportSnapshot) Cleanup(_ multistep.StateBag) {}

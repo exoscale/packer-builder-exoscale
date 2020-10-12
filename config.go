@@ -29,28 +29,29 @@ type Config struct {
 	common.PackerConfig `mapstructure:",squash"`
 	Comm                communicator.Config `mapstructure:",squash"`
 
-	APIEndpoint             string `mapstructure:"api_endpoint"`
-	APIKey                  string `mapstructure:"api_key"`
-	APISecret               string `mapstructure:"api_secret"`
-	InstanceName            string `mapstructure:"instance_name"`
-	InstanceZone            string `mapstructure:"instance_zone"`
-	InstanceTemplate        string `mapstructure:"instance_template"`
-	InstanceTemplateFilter  string `mapstructure:"instance_template_filter"`
-	InstanceType            string `mapstructure:"instance_type"`
-	InstanceDiskSize        int64  `mapstructure:"instance_disk_size"`
-	InstanceSecurityGroup   string `mapstructure:"instance_security_group"`
-	InstanceSSHKey          string `mapstructure:"instance_ssh_key"`
-	TemplateZone            string `mapstructure:"template_zone"`
-	TemplateName            string `mapstructure:"template_name"`
-	TemplateDescription     string `mapstructure:"template_description"`
-	TemplateUsername        string `mapstructure:"template_username"`
-	TemplateBootMode        string `mapstructure:"template_boot_mode"`
-	TemplateDisablePassword bool   `mapstructure:"template_disable_password"`
-	TemplateDisableSSHKey   bool   `mapstructure:"template_disable_sshkey"`
+	APIEndpoint             string   `mapstructure:"api_endpoint"`
+	APIKey                  string   `mapstructure:"api_key"`
+	APISecret               string   `mapstructure:"api_secret"`
+	InstanceName            string   `mapstructure:"instance_name"`
+	InstanceZone            string   `mapstructure:"instance_zone"`
+	InstanceTemplate        string   `mapstructure:"instance_template"`
+	InstanceTemplateFilter  string   `mapstructure:"instance_template_filter"`
+	InstanceType            string   `mapstructure:"instance_type"`
+	InstanceDiskSize        int64    `mapstructure:"instance_disk_size"`
+	InstanceSecurityGroup   string   `mapstructure:"instance_security_group"`
+	InstancePrivateNetworks []string `mapstructure:"instance_private_networks"`
+	InstanceSSHKey          string   `mapstructure:"instance_ssh_key"`
+	TemplateZone            string   `mapstructure:"template_zone"`
+	TemplateName            string   `mapstructure:"template_name"`
+	TemplateDescription     string   `mapstructure:"template_description"`
+	TemplateUsername        string   `mapstructure:"template_username"`
+	TemplateBootMode        string   `mapstructure:"template_boot_mode"`
+	TemplateDisablePassword bool     `mapstructure:"template_disable_password"`
+	TemplateDisableSSHKey   bool     `mapstructure:"template_disable_sshkey"`
 }
 
 func NewConfig(raws ...interface{}) (*Config, error) {
-	var config = Config{
+	config := Config{
 		APIEndpoint:            defaultAPIEndpoint,
 		InstanceType:           defaultInstanceType,
 		InstanceDiskSize:       defaultInstanceDiskSize,
