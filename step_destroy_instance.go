@@ -18,7 +18,7 @@ func (s *stepDestroyInstance) Run(ctx context.Context, state multistep.StateBag)
 		instance = state.Get("instance").(*egoscale.VirtualMachine)
 	)
 
-	ui.Say("Destroying Compute instance template")
+	ui.Say("Destroying Compute instance")
 
 	_, err := exo.RequestWithContext(ctx, &egoscale.DestroyVirtualMachine{ID: instance.ID})
 	if err != nil {
