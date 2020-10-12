@@ -33,7 +33,7 @@ func TestNewConfig(t *testing.T) {
 	require.Equal(t, defaultAPIEndpoint, config.APIEndpoint)
 	require.Equal(t, defaultInstanceType, config.InstanceType)
 	require.Equal(t, defaultInstanceDiskSize, config.InstanceDiskSize)
-	require.Equal(t, defaultInstanceSecurityGroup, config.InstanceSecurityGroup)
+	require.Equal(t, []string{defaultInstanceSecurityGroup}, config.InstanceSecurityGroups)
 	require.Equal(t, defaultInstanceTemplateFilter, config.InstanceTemplateFilter)
 	require.Equal(t, config.InstanceZone, testConfigTemplateZone)
 	require.Equal(t, defaultTemplateBootMode, config.TemplateBootMode)

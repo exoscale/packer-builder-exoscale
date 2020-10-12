@@ -64,7 +64,7 @@ func (s *stepCreateInstance) Run(ctx context.Context, state multistep.StateBag) 
 		TemplateID:         instanceTemplate.ID,
 		RootDiskSize:       config.InstanceDiskSize,
 		KeyPair:            config.InstanceSSHKey,
-		SecurityGroupNames: []string{config.InstanceSecurityGroup},
+		SecurityGroupNames: config.InstanceSecurityGroups,
 		NetworkIDs:         privateNetworks,
 		ZoneID:             zone.ID,
 	})

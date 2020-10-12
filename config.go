@@ -38,7 +38,7 @@ type Config struct {
 	InstanceTemplateFilter  string   `mapstructure:"instance_template_filter"`
 	InstanceType            string   `mapstructure:"instance_type"`
 	InstanceDiskSize        int64    `mapstructure:"instance_disk_size"`
-	InstanceSecurityGroup   string   `mapstructure:"instance_security_group"`
+	InstanceSecurityGroups  []string `mapstructure:"instance_security_groups"`
 	InstancePrivateNetworks []string `mapstructure:"instance_private_networks"`
 	InstanceSSHKey          string   `mapstructure:"instance_ssh_key"`
 	TemplateZone            string   `mapstructure:"template_zone"`
@@ -55,7 +55,7 @@ func NewConfig(raws ...interface{}) (*Config, error) {
 		APIEndpoint:            defaultAPIEndpoint,
 		InstanceType:           defaultInstanceType,
 		InstanceDiskSize:       defaultInstanceDiskSize,
-		InstanceSecurityGroup:  defaultInstanceSecurityGroup,
+		InstanceSecurityGroups: []string{defaultInstanceSecurityGroup},
 		InstanceTemplateFilter: defaultInstanceTemplateFilter,
 	}
 
