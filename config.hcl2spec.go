@@ -67,7 +67,7 @@ type FlatConfig struct {
 	InstanceTemplateFilter    *string           `mapstructure:"instance_template_filter" cty:"instance_template_filter"`
 	InstanceType              *string           `mapstructure:"instance_type" cty:"instance_type"`
 	InstanceDiskSize          *int64            `mapstructure:"instance_disk_size" cty:"instance_disk_size"`
-	InstanceSecurityGroup     *string           `mapstructure:"instance_security_group" cty:"instance_security_group"`
+	InstanceSecurityGroups    []string          `mapstructure:"instance_security_groups" cty:"instance_security_groups"`
 	InstancePrivateNetworks   []string          `mapstructure:"instance_private_networks" cty:"instance_private_networks"`
 	InstanceSSHKey            *string           `mapstructure:"instance_ssh_key" cty:"instance_ssh_key"`
 	TemplateZone              *string           `mapstructure:"template_zone" cty:"template_zone"`
@@ -149,7 +149,7 @@ func (*FlatConfig) HCL2Spec() map[string]hcldec.Spec {
 		"instance_template_filter":     &hcldec.AttrSpec{Name: "instance_template_filter", Type: cty.String, Required: false},
 		"instance_type":                &hcldec.AttrSpec{Name: "instance_type", Type: cty.String, Required: false},
 		"instance_disk_size":           &hcldec.AttrSpec{Name: "instance_disk_size", Type: cty.Number, Required: false},
-		"instance_security_group":      &hcldec.AttrSpec{Name: "instance_security_group", Type: cty.String, Required: false},
+		"instance_security_groups":     &hcldec.AttrSpec{Name: "instance_security_groups", Type: cty.List(cty.String), Required: false},
 		"instance_private_networks":    &hcldec.AttrSpec{Name: "instance_private_networks", Type: cty.List(cty.String), Required: false},
 		"instance_ssh_key":             &hcldec.AttrSpec{Name: "instance_ssh_key", Type: cty.String, Required: false},
 		"template_zone":                &hcldec.AttrSpec{Name: "template_zone", Type: cty.String, Required: false},

@@ -76,8 +76,8 @@ Here is the list of supported configuration parameters by the builder.
 - `instance_disk_size` (int) - Volume disk size in GB of the Compute instance
   to create. Defaults to `50`.
 
-- `instance_security_group` (string) - Security Group to use for the Compute
-  instance. Defaults to `default`.
+- `instance_security_groups` (list of strings) - List of Security Groups
+  (names) to apply to the Compute instance. Defaults to `["default"]`.
 
 - `instance_private_networks` (list of strings) - List of Private Networks
   (names) to attach to the Compute instance.
@@ -92,7 +92,8 @@ Here is the list of supported configuration parameters by the builder.
 - `template_username` (string) - An optional username to be used to log into
   Compute instances using this template.
 
-- `template_boot_mode` (string) - The template boot mode. Supported values: `legacy` (default), `uefi`.
+- `template_boot_mode` (string) - The template boot mode. Supported values:
+  `legacy` (default), `uefi`.
 
 - `template_disable_password` (boolean) - Whether the template should disable
   Compute instance password reset. Defaults to `false`.
