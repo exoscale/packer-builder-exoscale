@@ -22,6 +22,8 @@ other OS, we recommend using the [QEMU][packerqemu] builder combined with the
 You can find pre-built releases of the plugin [here][releases].
 Once you have downloaded the latest archive corresponding to your target OS,
 uncompress it to retrieve the `packer-builder-exoscale` plugin binary file.
+To install the plugin, please follow the official Packer documentation on
+[installing a plugin][packerplugindoc].
 
 
 ### From Sources
@@ -30,12 +32,11 @@ If you prefer to build the plugin from sources, clone the GitHub repository
 locally and run the command `make build` from the root of the sources
 directory. Upon successful compilation, a `packer-builder-exoscale` plugin
 binary file can be found in the `bin/` directory.
+To install the plugin, please follow the official Packer documentation on
+[installing a plugin][packerplugindoc].
 
 
 ## Configuration
-
-To use the plugin with Packer, please follow the official documentation on
-[installing a Packer plugin][packerplugindoc].
 
 Here is the list of supported configuration parameters by the builder.
 
