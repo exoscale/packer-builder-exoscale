@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"time"
 
 	"github.com/exoscale/egoscale"
 	"github.com/hashicorp/packer/common"
@@ -48,6 +49,7 @@ func (b *Builder) Run(ctx context.Context, ui packer.Ui, hook packer.Hook) (pack
 	ui.Say(fmt.Sprintf("Build ID: %s", b.buildID))
 
 	b.exo = egoscale.NewClient(b.config.APIEndpoint, b.config.APIKey, b.config.APISecret)
+	b.exo.Timeout = 5 * time.Minute
 
 	resp, err := b.exo.GetWithContext(ctx, &egoscale.ListZones{Name: b.config.InstanceZone})
 	if err != nil {
