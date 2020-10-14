@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.1
+
+### Fixes
+
+* Perform cleanup actions if requested ([#6](https://github.com/exoscale/packer-builder-exoscale/pull/6))
+
+
 ## 0.2.0
 
 ### New
