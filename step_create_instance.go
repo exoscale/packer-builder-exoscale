@@ -83,7 +83,23 @@ func (s *stepCreateInstance) Run(ctx context.Context, state multistep.StateBag) 
 	return multistep.ActionContinue
 }
 
-func (s *stepCreateInstance) Cleanup(_ multistep.StateBag) {}
+func (s *stepCreateInstance) Cleanup(state multistep.StateBag) {
+	var (
+		exo = state.Get("exo").(*egoscale.Client)
+		ui  = state.Get("ui").(packer.Ui)
+	)
+
+	if v, ok := state.GetOk("instance"); ok {
+		ui.Say("Cleanup: destroying Compute instance")
+
+		instance := v.(*egoscale.VirtualMachine)
+
+		_, err := exo.Request(&egoscale.DestroyVirtualMachine{ID: instance.ID})
+		if err != nil {
+			ui.Error(fmt.Sprintf("unable to destroy Compute instance: %s", err))
+		}
+	}
+}
 
 func instancePrivateNetworkIDs(ctx context.Context, state multistep.StateBag) ([]egoscale.UUID, error) {
 	var (

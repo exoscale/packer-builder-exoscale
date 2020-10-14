@@ -60,4 +60,19 @@ func (s *stepCreateSSHKey) Run(ctx context.Context, state multistep.StateBag) mu
 	return multistep.ActionContinue
 }
 
-func (s *stepCreateSSHKey) Cleanup(_ multistep.StateBag) {}
+func (s *stepCreateSSHKey) Cleanup(state multistep.StateBag) {
+	var (
+		exo    = state.Get("exo").(*egoscale.Client)
+		ui     = state.Get("ui").(packer.Ui)
+		config = state.Get("config").(*Config)
+	)
+
+	if state.Get("delete_ssh_key").(bool) {
+		ui.Say("Cleanup: deleting SSH key")
+
+		err := exo.BooleanRequest(&egoscale.DeleteSSHKeyPair{Name: config.InstanceSSHKey})
+		if err != nil {
+			ui.Error(fmt.Sprintf("unable to delete SSH key: %s", err))
+		}
+	}
+}
