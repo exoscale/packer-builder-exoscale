@@ -84,8 +84,6 @@ func (b *Builder) Run(ctx context.Context, ui packer.Ui, hook packer.Hook) (pack
 		new(stepSnapshotInstance),
 		new(stepExportSnapshot),
 		new(stepRegisterTemplate),
-		new(stepDestroyInstance),
-		new(stepDeleteSSHKey),
 	}
 
 	b.runner = common.NewRunnerWithPauseFn(steps, b.config.PackerConfig, ui, state)
