@@ -3,6 +3,7 @@ package exoscale
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/exoscale/egoscale"
 	"github.com/hashicorp/packer/helper/multistep"
@@ -34,7 +35,7 @@ func (s *stepCreateInstance) Run(ctx context.Context, state multistep.StateBag) 
 	}
 	instanceType := resp.(*egoscale.ServiceOffering)
 
-	resp, err = exo.GetWithContext(ctx, &egoscale.ListTemplates{
+	listTemplatesResp, err := exo.ListWithContext(ctx, &egoscale.ListTemplates{
 		Name:           config.InstanceTemplate,
 		TemplateFilter: config.InstanceTemplateFilter,
 		ZoneID:         zone.ID,
@@ -43,7 +44,28 @@ func (s *stepCreateInstance) Run(ctx context.Context, state multistep.StateBag) 
 		ui.Error(fmt.Sprintf("unable to list Compute instance templates: %s", err))
 		return multistep.ActionHalt
 	}
-	instanceTemplate := resp.(*egoscale.Template)
+	if len(listTemplatesResp) == 0 {
+		ui.Error(fmt.Sprintf("template %q not found", config.InstanceTemplate))
+		return multistep.ActionHalt
+	}
+
+	// In case multiple results are returned, we pick the most recent item from the list.
+	var (
+		instanceTemplate *egoscale.Template
+		templateDate     time.Time
+	)
+	for _, t := range listTemplatesResp {
+		ts, err := time.Parse("2006-01-02T15:04:05-0700", t.(*egoscale.Template).Created)
+		if err != nil {
+			ui.Error(fmt.Sprintf("template creation date parsing error: %s", err))
+			// 	return multistep.ActionHalt
+		}
+
+		if ts.After(templateDate) {
+			templateDate = ts
+			instanceTemplate = t.(*egoscale.Template)
+		}
+	}
 
 	// If not set at this point, attempt to retrieve the template's username to set the SSH communicator's username.
 	if config.Comm.SSHUsername == "" {
