@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.3
+
+### Fixes
+
+* Fix Compute instance template usage ([#8](https://github.com/exoscale/packer-builder-exoscale/pull/8))
+
+
 ## 0.2.2
 
 ### Fixes
