@@ -2,6 +2,8 @@
 
 [![Actions Status](https://github.com/exoscale/packer-builder-exoscale/workflows/CI/badge.svg)](https://github.com/exoscale/packer-builder-exoscale/actions?query=workflow%3ACI)
 
+> **IMPORTANT: this project has been superseded by the [multi-component Exoscale plugin](https://github.com/exoscale/packer-plugin-exoscale), and will not be updated anymore.**
+
 The `exoscale` builder plugin can be used with HashiCorp [Packer][packer]
 to create a new [instance template][customtemplatesdoc] from a Compute
 instance volume snapshot. This plugin creates a Compute instance in your
